@@ -2,13 +2,21 @@ process.loadEnvFile()
 
 import express from 'express'
 
+import tasksRouter from './routes/v1/tasks.routes.js'
+
+// Initial Data
 const TaskTracker = express()
 const port = process.env.PORT || 3001
 
+// Vitals Route
 TaskTracker.get("/", (req, res) => {
     res.send("Server running!")
 })
 
+// Routes
+TaskTracker.use("/api/v1/tasks", tasksRouter)
+
+// Server Initialization
 TaskTracker.listen(port, () => {
     console.log(`Server running on: http://localhost:${port}`)
 })
