@@ -1,0 +1,40 @@
+
+---
+
+## 📄 `.gitignore`
+
+```gitignore
+# Node modules
+**/node_modules/
+
+# Logs
+**/logs
+*.log
+npm-debug.log*
+
+# dotenv files
+**/.env
+**/.env.local
+**/.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+client/dist/
+client/build/
+server/dist/
+
+# IDEs
+.vscode/
+.idea/
+
+# Coverage and testing
+coverage/
+*.lcov
+
+# Misc
+*.tgz
+*.lock
+yarn-error.log
