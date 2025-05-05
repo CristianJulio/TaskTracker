@@ -1,12 +1,13 @@
 import { Router } from 'express'
-import { prisma } from '../../prisma/cliente.js'
+import * as tasksController from '../../controller/tasks.controller.js'
+import { routesParams } from '../../utils/RoutesParams.js'
 
 const router = Router()
 
-router.get("/", async (req, res) => {})
-router.get("/:taskId", (req, res) => { })
-router.post("/create", (req, res) => { })
-router.put("/:taskId", (req, res) => { })
-router.put("/delete/:taskId", (req, res) => { })
+router.get("/", tasksController.findAll)
+router.get(`/${routesParams.tasks.taskId.param}`, tasksController.findOne)
+router.post("/create", tasksController.create)
+router.put("/:taskId", tasksController.update)
+router.put("/delete/:taskId", tasksController.deleteTask)
 
 export default router
