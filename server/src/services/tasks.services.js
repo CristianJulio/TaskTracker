@@ -24,6 +24,8 @@ export const findOne = async (taskId) => {
     const task = await tasksRepository.findOne(taskId)
 
     if (!task) throw new HttpError(`Unable to find task with id: ${taskId}`, 404)
+
+    return task
   } catch (error) {
     throw error
   }
