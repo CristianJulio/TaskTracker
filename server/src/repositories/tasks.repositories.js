@@ -7,7 +7,7 @@ import { prisma } from '../prisma/cliente.js'
  */
 export const findAll = () => {
 	try {
-		return prisma.task.findMany({where: { active: true }})
+		return prisma.task.findMany({ where: { active: true } })
 	} catch (error) {
 		throw error;
 	}
@@ -20,7 +20,7 @@ export const findAll = () => {
  */
 export const findOne = (taskId) => {
 	try {
-		return prisma.task.findUnique({ where: { id: taskId } })
+		return prisma.task.findUnique({ where: { id: taskId, active: true } })
 	} catch (error) {
 		throw error;
 	}
@@ -65,7 +65,7 @@ export const update = (updateTaskDto) => {
  */
 export const deleteTask = async (taskId) => {
 	try {
-		return prisma.task.update({ where: { id: taskId }, data: { active: false } })
+		return prisma.task.update({ where: { id: taskId, active: true }, data: { active: false } })
 	} catch (error) {
 		throw error;
 	}

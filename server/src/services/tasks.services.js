@@ -64,6 +64,8 @@ export const update = async (updateTaskDto) => {
  */
 export const deleteTask = async (taskId) => {
   try {
+    await findOne(taskId)
+
     return tasksRepository.deleteTask(taskId)
   } catch (error) {
     throw error;
