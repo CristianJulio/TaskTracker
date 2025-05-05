@@ -3,6 +3,7 @@ process.loadEnvFile()
 import express from 'express'
 
 import tasksRouter from './routes/v1/tasks.routes.js'
+import { errorHandler } from './middlewares/errorHandler.js'
 
 // Initial Data
 const TaskTracker = express()
@@ -15,6 +16,9 @@ TaskTracker.get("/", (req, res) => {
 
 // Routes
 TaskTracker.use("/api/v1/tasks", tasksRouter)
+
+// Error handling middleware
+TaskTracker.use(errorHandler)
 
 // Server Initialization
 TaskTracker.listen(port, () => {
