@@ -52,7 +52,8 @@ export const update = (taskId, updateTaskDto) => {
 			where: { id: taskId, active: true },
 			data: {
 				...(title != undefined && { title }),
-				...(completed != undefined && { completed })
+				...(completed != undefined && { completed }),
+				updatedAt: new Date()
 			}
 		})
 	} catch (error) {
@@ -69,7 +70,7 @@ export const deleteTask = async (taskId) => {
 	try {
 		return prisma.task.update({
 			where: { id: taskId, active: true },
-			data: { active: false }
+			data: { active: false, updatedAt: new Date() }
 		})
 	} catch (error) {
 		throw error;
