@@ -1,7 +1,6 @@
-import { HttpError } from '../utils/HttpError.js'
 import { HttpStatus } from '../utils/HttpStatus.js'
-import { prisma } from '../prisma/cliente.js'
 import { routesParams } from '../utils/RoutesParams.js'
+import * as tasksServices from '../services/tasks.services.js'
 
 /**
  * 
@@ -13,7 +12,7 @@ import { routesParams } from '../utils/RoutesParams.js'
  */
 export const findAll = async (req, res, next) => {
   try {
-    const tasks = await prisma.task.findMany()
+    const tasks = await tasksServices.findAll()
     res.status(HttpStatus.Ok).json({ error: false, message: null, data: tasks })
   } catch (error) {
     next(error)
@@ -30,14 +29,7 @@ export const findAll = async (req, res, next) => {
  */
 export const findOne = async (req, res, next) => {
   try {
-    const id = Number(req.params[routesParams.tasks.taskId.base])
-
-    const task = await prisma.task.findUnique({
-      where: { id }
-    })
-
-    if (!task) throw new HttpError(`Unable to find task with id: ${id}`, 404)
-
+    const task = await tasksServices.findOne(Number(req.params[routesParams.tasks.taskId.base]))
     res.status(HttpStatus.Ok).json({ error: false, message: null, data: task })
   } catch (error) {
     next(error)
@@ -54,7 +46,7 @@ export const findOne = async (req, res, next) => {
  */
 export const create = async (req, res, next) => {
   try {
-    const createdTask = await prisma.task.create({ data: { title: req.body.title } })
+    const createdTask = await tasksServices.create(req.body)
     res.status(HttpStatus.Created).json({ error: false, message: null, data: createdTask })
   } catch (error) {
     next(error)
@@ -71,16 +63,7 @@ export const create = async (req, res, next) => {
  */
 export const update = async (req, res, next) => {
   try {
-    const { title, completed } = req.body
-
-    const updatedTask = await prisma.task.update({
-      where: { id: Number(req.params[routesParams.tasks.taskId.base]) },
-      data: {
-        ...(title != undefined && { title }),
-        ...(completed != undefined && { completed })
-      }
-    })
-
+    const updatedTask = await tasksServices.update(req.body)
     res.status(HttpStatus.Ok).json({ error: false, message: null, data: updatedTask })
   } catch (error) {
     next(error)
@@ -97,11 +80,7 @@ export const update = async (req, res, next) => {
  */
 export const deleteTask = async (req, res, next) => {
   try {
-    await prisma.task.update({
-      where: { id: Number(req.params[routesParams.tasks.taskId.base]) },
-      data: { active: false }
-    })
-
+    await tasksServices.deleteTask(Number(req.params[routesParams.tasks.taskId.base]))
     res.status(HttpStatus.Ok).json({ error: false, message: null, data: null })
   } catch (error) {
     next(error)
