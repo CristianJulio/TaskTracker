@@ -63,7 +63,7 @@ export const create = async (req, res, next) => {
  */
 export const update = async (req, res, next) => {
   try {
-    const updatedTask = await tasksServices.update(req.body)
+    const updatedTask = await tasksServices.update(Number(req.params[routesParams.tasks.taskId.base]), req.body)
     res.status(HttpStatus.Ok).json({ error: false, message: null, data: updatedTask })
   } catch (error) {
     next(error)

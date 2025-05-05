@@ -1,5 +1,5 @@
-import { Task } from '../models/task.model.js';
 import { prisma } from '../prisma/cliente.js'
+import { Task } from '../models/task.model.js';
 
 /**
  * 
@@ -40,17 +40,19 @@ export const create = (createTaskDto) => {
 }
 
 /**
- * 
+ * @param {number} taskId
  * @param {{title?: string, completed?: boolean}} updateTaskDto 
  * @returns {Promise<Task>}
  */
-export const update = (updateTaskDto) => {
+export const update = (taskId, updateTaskDto) => {
+	const { title, completed } = updateTaskDto;
+
 	try {
 		return prisma.task.update({
-			where: { id: Number(req.params[routesParams.tasks.taskId.base]) },
+			where: { id: taskId, active: true },
 			data: {
-				...(updateTaskDto.title != undefined && { title }),
-				...(updateTaskDto.completed != undefined && { completed })
+				...(title != undefined && { title }),
+				...(completed != undefined && { completed })
 			}
 		})
 	} catch (error) {
@@ -65,7 +67,10 @@ export const update = (updateTaskDto) => {
  */
 export const deleteTask = async (taskId) => {
 	try {
-		return prisma.task.update({ where: { id: taskId, active: true }, data: { active: false } })
+		return prisma.task.update({
+			where: { id: taskId, active: true },
+			data: { active: false }
+		})
 	} catch (error) {
 		throw error;
 	}

@@ -45,13 +45,15 @@ export const create = async (createTaskDto) => {
 }
 
 /**
- * 
+ * @param {number} taskId
  * @param {{title?: string, completed?: boolean}} updateTaskDto
  * @returns {Promise<Task>}
  */
-export const update = async (updateTaskDto) => {
+export const update = async (taskId, updateTaskDto) => {
   try {
-    return tasksRepository.update(updateTaskDto)
+    await findOne(taskId)
+
+    return tasksRepository.update(taskId, updateTaskDto)
   } catch (error) {
     throw error;
   }
