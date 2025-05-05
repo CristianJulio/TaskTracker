@@ -7,7 +7,7 @@ import { prisma } from '../prisma/cliente.js'
  */
 export const findAll = () => {
 	try {
-		return prisma.task.findMany()
+		return prisma.task.findMany({where: { active: true }})
 	} catch (error) {
 		throw error;
 	}
