@@ -13,6 +13,14 @@ model Task {
   title     String
   completed Boolean  @default(false)
   active    Boolean  @default(true)
+  deadline  DateTime @default(now())
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  name String
+  color String @default("#22868b")
+  active Boolean @default(true)
 }

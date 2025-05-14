@@ -5,6 +5,8 @@ export class Task {
     title;
     /** @type {boolean} */
     completed;
+    /** @type {Date} */
+    deadline;
     /** @type {boolean} */
     active;
     /** @type {Date} */

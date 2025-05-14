@@ -1,5 +1,5 @@
 import { prisma } from '../prisma/cliente.js'
-import { Task } from '../models/task.model.js';
+import { Task } from '../models/Task/task.model.js';
 
 /**
  * 
@@ -28,12 +28,12 @@ export const findOne = (taskId) => {
 
 /**
  * 
- * @param {{title: string}} createTaskDto 
+ * @param {{title: string, deadline: string}} createTaskDto 
  * @returns {Promise<Task>}
  */
 export const create = (createTaskDto) => {
 	try {
-		return prisma.task.create({ data: { title: createTaskDto.title } })
+		return prisma.task.create({ data: { title: createTaskDto.title, deadline: createTaskDto.deadline } })
 	} catch (error) {
 		throw error;
 	}
@@ -41,11 +41,11 @@ export const create = (createTaskDto) => {
 
 /**
  * @param {number} taskId
- * @param {{title?: string, completed?: boolean}} updateTaskDto 
+ * @param {{title?: string, completed?: boolean, deadline?: string}} updateTaskDto 
  * @returns {Promise<Task>}
  */
 export const update = (taskId, updateTaskDto) => {
-	const { title, completed } = updateTaskDto;
+	const { title, completed, deadline } = updateTaskDto;
 
 	try {
 		return prisma.task.update({
@@ -53,6 +53,7 @@ export const update = (taskId, updateTaskDto) => {
 			data: {
 				...(title != undefined && { title }),
 				...(completed != undefined && { completed }),
+				...(deadline != undefined && { deadline }),
 				updatedAt: new Date()
 			}
 		})

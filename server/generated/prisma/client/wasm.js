@@ -125,8 +125,16 @@ exports.Prisma.TaskScalarFieldEnum = {
   title: 'title',
   completed: 'completed',
   active: 'active',
+  deadline: 'deadline',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  color: 'color',
+  active: 'active'
 };
 
 exports.Prisma.SortOrder = {
@@ -141,7 +149,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Task: 'Task'
+  Task: 'Task',
+  Category: 'Category'
 };
 
 /**

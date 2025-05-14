@@ -1,5 +1,5 @@
 import { HttpError } from '../utils/HttpError.js'
-import { Task } from '../models/task.model.js'
+import { Task } from '../models/Task/task.model.js'
 import * as tasksRepository from '../repositories/tasks.repositories.js'
 
 /**
