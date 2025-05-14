@@ -1,4 +1,4 @@
-import { createTaskValidator } from '../../validators/tasks/task.validator.js'
+import { createTaskValidator } from '../../validators/task.validator.js'
 import { Router } from 'express'
 import { routesParams } from '../../utils/RoutesParams.js'
 import { validate } from '../../middlewares/validate.js'

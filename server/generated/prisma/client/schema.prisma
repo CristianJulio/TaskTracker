@@ -9,13 +9,15 @@ datasource db {
 }
 
 model Task {
-  id        Int      @id @default(autoincrement())
-  title     String
-  completed Boolean  @default(false)
-  active    Boolean  @default(true)
-  deadline  DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  title      String
+  completed  Boolean  @default(false)
+  active     Boolean  @default(true)
+  deadline   DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
 }
 
 model Category {
@@ -23,4 +25,5 @@ model Category {
   name   String
   color  String  @default("#22868b")
   active Boolean @default(true)
+  tasks  Task[]
 }

@@ -127,7 +127,8 @@ exports.Prisma.TaskScalarFieldEnum = {
   active: 'active',
   deadline: 'deadline',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  categoryId: 'categoryId'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {

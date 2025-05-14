@@ -13,4 +13,6 @@ export class Task {
     createdAt;
     /** @type {Date} */
     updatedAt;
+    /** @type {number} */
+    categoryId;
 }
