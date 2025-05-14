@@ -9,7 +9,7 @@ const router = Router()
 router.get("/", tasksController.findAll)
 router.get(`/${routesParams.tasks.taskId.param}`, tasksController.findOne)
 router.post("/create", createTaskValidator, validate, tasksController.create)
-router.put("/:taskId", tasksController.update)
-router.put("/delete/:taskId", tasksController.deleteTask)
+router.put(`/${routesParams.tasks.taskId.param}`, tasksController.update)
+router.put(`/delete/${routesParams.tasks.taskId.param}`, tasksController.deleteTask)
 
 export default router
