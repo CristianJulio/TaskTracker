@@ -122,20 +122,33 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.TaskScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  completed: 'completed',
   active: 'active',
+  completed: 'completed',
   deadline: 'deadline',
+  title: 'title',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  categoryId: 'categoryId'
+  categoryId: 'categoryId',
+  userId: 'userId'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  active: 'active',
   color: 'color',
-  active: 'active'
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  name: 'name',
+  password: 'password',
+  username: 'username',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -151,7 +164,8 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   Task: 'Task',
-  Category: 'Category'
+  Category: 'Category',
+  User: 'User'
 };
 
 /**
