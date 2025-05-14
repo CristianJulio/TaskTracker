@@ -3272,7 +3272,7 @@ export namespace Prisma {
     title: string
     completed?: boolean
     active?: boolean
-    deadline?: Date | string
+    deadline: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3282,7 +3282,7 @@ export namespace Prisma {
     title: string
     completed?: boolean
     active?: boolean
-    deadline?: Date | string
+    deadline: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3311,7 +3311,7 @@ export namespace Prisma {
     title: string
     completed?: boolean
     active?: boolean
-    deadline?: Date | string
+    deadline: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }

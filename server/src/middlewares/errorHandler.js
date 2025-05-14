@@ -1,9 +1,11 @@
 /**
  * 
+ * Middleware that handles general errors
+ * 
  * @param {any} err 
  * @param {Request} req 
  * @param {Response} res 
- * @param {import("express").NextFunction} next 
+ * @param {NextFunction} next 
  */
 export function errorHandler(err, req, res, next) {
     const status = err.statusCode || 500

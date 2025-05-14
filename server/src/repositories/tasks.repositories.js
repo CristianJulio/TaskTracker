@@ -31,9 +31,9 @@ export const findOne = (taskId) => {
  * @param {{title: string, deadline: string}} createTaskDto 
  * @returns {Promise<Task>}
  */
-export const create = (createTaskDto) => {
+export const create = async (createTaskDto) => {
 	try {
-		return prisma.task.create({ data: { title: createTaskDto.title, deadline: createTaskDto.deadline } })
+		return await prisma.task.create({ data: { title: createTaskDto.title, deadline: createTaskDto.deadline } })
 	} catch (error) {
 		throw error;
 	}

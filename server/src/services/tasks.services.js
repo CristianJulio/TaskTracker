@@ -38,7 +38,7 @@ export const findOne = async (taskId) => {
  */
 export const create = async (createTaskDto) => {
   try {
-    return tasksRepository.create(createTaskDto)
+    return await tasksRepository.create(createTaskDto)
   } catch (error) {
     throw error;
   }

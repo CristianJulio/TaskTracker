@@ -3,6 +3,8 @@ import { HttpStatus } from "../utils/HttpStatus.js";
 
 /**
  * 
+ * Middleware that handles express-validator errors
+ * 
  * @param {Request} req 
  * @param {Response} res 
  * @param {NextFunction} next 
