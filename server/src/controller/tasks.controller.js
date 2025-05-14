@@ -81,7 +81,7 @@ export const update = async (req, res, next) => {
 export const deleteTask = async (req, res, next) => {
   try {
     await tasksServices.deleteTask(Number(req.params[routesParams.tasks.taskId.base]))
-    res.status(HttpStatus.Ok).json({ error: false, message: null, data: null })
+    res.status(HttpStatus.Ok).json({ error: false, message: "Task deleted successfully", data: null })
   } catch (error) {
     next(error)
   }

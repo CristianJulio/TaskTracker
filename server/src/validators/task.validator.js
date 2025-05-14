@@ -1,5 +1,14 @@
-import { body } from 'express-validator'
+import { body, param } from 'express-validator'
+import { HttpError } from '../utils/HttpError.js'
+import { routesParams } from '../utils/RoutesParams.js'
 import { TaskTableFields } from '../models/Task/fields.js'
+import * as tasksRepository from '../repositories/tasks.repositories.js'
+
+export const validateTaskExistance = async taskId => {
+  const task = await tasksRepository.findOne(taskId)
+
+  if (!task) throw new HttpError(`Task with id ${taskId} not found.`, 400)
+}
 
 export const createTaskValidator = [
   body(TaskTableFields.title)
@@ -18,4 +27,12 @@ export const createTaskValidator = [
   body(TaskTableFields.userId)
     .exists({ values: "falsy" }).withMessage("userId is required")
     .isInt().withMessage("userId must be an integer")
+]
+
+export const deleteTaskValidator = [
+  param(routesParams.tasks.taskId.base)
+    .isInt().withMessage("taskId must be an integer")
+    .toInt()
+    .bail()
+    .custom(validateTaskExistance)
 ]
