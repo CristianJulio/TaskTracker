@@ -29,6 +29,12 @@ export const createTaskValidator = [
     .isInt().withMessage("userId must be an integer")
 ]
 
+export const findOneTaskValidator = [
+  param(routesParams.tasks.taskId.base)
+    .isInt().withMessage("taskid must be an integer")
+    .toInt()
+]
+
 export const deleteTaskValidator = [
   param(routesParams.tasks.taskId.base)
     .isInt().withMessage("taskId must be an integer")
