@@ -15,4 +15,6 @@ export class Task {
     updatedAt;
     /** @type {number} */
     categoryId;
+    /** @type {number} */
+    useId;
 }

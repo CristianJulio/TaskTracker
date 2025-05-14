@@ -13,6 +13,9 @@ export const createTaskValidator = [
     .toDate()
     .custom(value => new Date(value) > new Date()).withMessage("Deadline must be in the future"),
   body(TaskTableFields.categoryId)
-    .exists({values: "falsy"}).withMessage("categoryId is required")
-    .isInt().withMessage("categoryId must be an integer")
+    .exists({ values: "falsy" }).withMessage("categoryId is required")
+    .isInt().withMessage("categoryId must be an integer"),
+  body(TaskTableFields.userId)
+    .exists({ values: "falsy" }).withMessage("userId is required")
+    .isInt().withMessage("userId must be an integer")
 ]

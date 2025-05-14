@@ -6,5 +6,6 @@ export const TaskTableFields = {
     id: "id",
     title: "title",
     updatedAt: "updatedAt",
-    categoryId: "categoryId"
+    categoryId: "categoryId",
+    userId: "userId"
 }

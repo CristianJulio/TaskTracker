@@ -33,7 +33,7 @@ export const findOne = async (taskId) => {
 
 /**
  * 
- * @param {{title: string}} createTaskDto 
+ * @param {{title: string, deadline: string, categoryId: number, userId: number}} createTaskDto
  * @returns {Promise<Task>}
  */
 export const create = async (createTaskDto) => {

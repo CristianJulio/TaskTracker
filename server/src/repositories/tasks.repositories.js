@@ -28,7 +28,7 @@ export const findOne = (taskId) => {
 
 /**
  * 
- * @param {{title: string, deadline: string, categoryId: string}} createTaskDto 
+ * @param {{title: string, deadline: string, categoryId: number, userId: number}} createTaskDto 
  * @returns {Promise<Task>}
  */
 export const create = async (createTaskDto) => {
@@ -37,7 +37,8 @@ export const create = async (createTaskDto) => {
 			data: {
 				title: createTaskDto.title,
 				deadline: createTaskDto.deadline,
-				categoryId: createTaskDto.categoryId
+				categoryId: createTaskDto.categoryId,
+				userId: createTaskDto.userId
 			}
 		})
 	} catch (error) {
