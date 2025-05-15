@@ -30,10 +30,12 @@ export const validateTaskCompleted = () => body(TaskTableFields.completed)
 export const validateTaskCategoryId = () => body(TaskTableFields.categoryId)
   .exists({ values: "falsy" }).withMessage("categoryId is required")
   .isInt().withMessage("categoryId must be an integer")
+  .toInt()
 
 export const validateTaskUserId = () => body(TaskTableFields.userId)
   .exists({ values: "falsy" }).withMessage("userId is required")
   .isInt().withMessage("userId must be an integer")
+  .toInt()
 
 export const validateTaskId = () => param(routesParams.tasks.taskId.base)
   .isInt().withMessage("taskid must be an integer")
