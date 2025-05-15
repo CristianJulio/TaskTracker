@@ -51,8 +51,6 @@ export const create = async (createTaskDto) => {
  */
 export const update = async (taskId, updateTaskDto) => {
   try {
-    await findOne(taskId)
-
     return tasksRepository.update(taskId, updateTaskDto)
   } catch (error) {
     throw error;
